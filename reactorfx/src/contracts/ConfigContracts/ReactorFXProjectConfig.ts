@@ -1,6 +1,4 @@
 
-import { isReactorFXConfigPaths } from "./ReactorFXConfigPaths"
-
 /**
  * Represents the root config required by ReactorFX.
  *
@@ -8,7 +6,7 @@ import { isReactorFXConfigPaths } from "./ReactorFXConfigPaths"
  * @property configSource - The JSON file path relative to the 'projectRoot' containing the ReactorFX config.
  * @property configKey - The config key expected to be in the configSource
  */
-export interface ReactorFXRootConfig {
+export interface ReactorFXProjectConfig {
     projectRoot: string,
     configSource: string,
     configKey: string,
@@ -17,11 +15,13 @@ export interface ReactorFXRootConfig {
 /**
  * 
  * @param config The object to check
- * @returns True if 'config' is ReactorFXConfig like
+ * @returns True if 'config' is {@link ReactorFXProjectConfig} like
  */
-export function isReactorFXConfig(config: any) {
-    return (
-        config?.paths &&
-        isReactorFXConfigPaths(config.paths)
+export function isReactorFXProjectConfig(config: any) {
+    return(
+        config &&
+        (typeof config?.projectRoot === 'string') &&
+        (typeof config?.configSource === 'string') &&
+        (typeof config?.configKey === 'string')
     )
 }

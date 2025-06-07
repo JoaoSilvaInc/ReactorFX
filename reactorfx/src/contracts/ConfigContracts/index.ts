@@ -1,3 +1,4 @@
 
-export { ReactorFXConfig } from './ReactorFXConfig'
-export { ReactorFXConfigPaths } from './ReactorFXConfigPaths'
+export { ReactorFXConfig, isReactorFXConfig } from './ReactorFXConfig'
+export { ReactorFXProjectConfig, isReactorFXProjectConfig } from './ReactorFXProjectConfig'
+export { ReactorFXConfigPaths, isReactorFXConfigPaths } from './ReactorFXConfigPaths'

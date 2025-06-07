@@ -1,13 +1,14 @@
 
 import AnimationStrategy from "../contracts/AnimationStrategy";
-import { getConfig } from "../config";
+import {recoverConfigFromEnv } from "../config";
 
 export default function createAnimationStrategiesArray(strategiesPath: string): Promise<AnimationStrategy[]> {
     return new Promise<AnimationStrategy[]>((resolve, reject) => {
         
-        const config = getConfig();
+        const config = recoverConfigFromEnv();
+        // import all strategies according to config
+        // put it on an array
+        // return them all
 
     });
 }
-
-function resolvePathTreee(): string[] {}

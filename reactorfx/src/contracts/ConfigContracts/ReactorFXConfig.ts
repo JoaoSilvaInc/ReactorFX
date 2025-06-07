@@ -1,5 +1,5 @@
 
-import { ReactorFXConfigPaths } from "./ReactorFXConfigPaths";
+import { ReactorFXConfigPaths, isReactorFXConfigPaths } from "./ReactorFXConfigPaths";
 
 /**
  * Represents the configuration object for ReactorFX.
@@ -8,4 +8,16 @@ import { ReactorFXConfigPaths } from "./ReactorFXConfigPaths";
  */
 export interface ReactorFXConfig {
     paths: ReactorFXConfigPaths,
+}
+
+/**
+ * 
+ * @param config The object to check
+ * @returns True if 'config' is ReactorFXConfig like
+ */
+export function isReactorFXConfig(config: any) {
+    return (
+        config?.paths &&
+        isReactorFXConfigPaths(config.paths)
+    )
 }
