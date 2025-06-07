@@ -9,47 +9,40 @@ import { ReactorFXConfig, isReactorFXConfig } from "../../contracts/ConfigContra
 * @remarks Returns 'process.env.REACTORFX_CONFIG' if 'import.meta.env.REACTORFX_CONFIG' is undefined (not in a Vite env)
 */
 export function recoverConfigFromEnv(): ReactorFXConfig {
+
+    let config;
+
+    // Try to find config in Vite env
+    try {
+        
+        const foundConfig = JSON.parse(import.meta.env.REACTORFX_CONFIG || '') as ReactorFXConfig;
+
+        if (!isReactorFXConfig(foundConfig)) {
+            throw new Error('[reactorfx] Invalid type to ReactorFX config in Vite env. Expected shape: ReactorFXConfig')
+        }
+
+        config = foundConfig;
+
+    } catch (err) {
+        console.warn('[reactorfx] ReactorFX might not to work, because it was designed to run in Vite env.', err);
+    }
     
-    if (
-        typeof import.meta !== 'undefined' &&
-        typeof import.meta.env !== 'undefined' &&
-        typeof import.meta.env.REACTORFX_CONFIG !== 'undefined'
-    ) {
-        try {
-            const config = JSON.parse(import.meta.env.REACTORFX_CONFIG) as ReactorFXConfig;
-            if (isReactorFXConfig(config)) {
-                return config;
-            } else {
-                throw new Error('[reactorfx] Invalid type to import.meta.env.REACTORFX_CONFIG. Expected shape: ReactorFXConfig')
-            }
-        } catch (err) {
-            console.warn(
-                '[reactorfx] Failed to read import.meta.env.REACTORFX_CONFIG. Using DEFAULT_CONFIG.',
-                err
-            );
+    // Try to find config in Node env
+    try {
+
+        const foundConfig = JSON.parse(process.env.REACTORFX_CONFIG || '') as ReactorFXConfig;
+        
+        if (!isReactorFXConfig(foundConfig)) {
+            throw new Error('[reactorfx] Invalid type to ReactorFX config in Node env. Expected shape: ReactorFXConfig')
         }
+        
+        config = foundConfig;
+
+    } catch (err) {
+        config = DEFAULT_CONFIG;
+        console.warn('[reactorfx] Cannot found ReactorFX config in the process enviroment. Using DEFAULT_CONFIG.', err);
     }
 
-    if (
-        typeof process !== 'undefined' &&
-        typeof process.env !== 'undefined' &&
-        typeof process.env.REACTORFX_CONFIG !== 'undefined'
-    ) {
-        try {
-            const config = JSON.parse(process.env.REACTORFX_CONFIG) as ReactorFXConfig;
-            if (isReactorFXConfig(config)) {
-                return config;
-            } else {
-                throw new Error('[reactorfx] Invalid type to process.env.REACTORFX_CONFIG. Expected shape: ReactorFXConfig')
-            }
-        } catch (err) {
-            console.warn(
-                '[reactorfx] Failed to read process.env.REACTORFX_CONFIG. Using DEFAULT_CONFIG.',
-                err
-            );
-        }
-    }
+    return config as ReactorFXConfig;
 
-    console.warn('[reactorfx] Failed to read REACTORFX_CONFIG. Using DEFAULT_CONFIG.');
-    return DEFAULT_CONFIG;
 }

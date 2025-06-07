@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/JoaoSilvaInc/ReactorFX#readme",
   "devDependencies": {
+    "@types/node": "^22.15.30",
     "@types/react": "^19.1.6",
     "jest": "^29.7.0"
   },

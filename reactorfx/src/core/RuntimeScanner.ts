@@ -1,9 +1,14 @@
 
+// Responsabilities
+// Offering a function to get all elements that matches a list of strategies
+// Use MutationObserver to runtime handling
+// Handle self triggered mutations to optmize performance
+
 // 1 - Input
 // Listen to added && removed DOM elm
-// Notify the changes
+// Listen to dynamic class changes
 
 // 2 - Core
 // Recieve notifications from input
-// Check if some of them are relevant (has classes included in the strategies)
-// Notify the relevant actions
+// Check wich of them are relevant (matches the actives strategies)
+// Notify the changes
