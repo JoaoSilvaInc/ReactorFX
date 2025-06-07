@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { pathToFileURL } from 'url';
 
-import { getRootPath, readJsonProp } from "../../../utils/fileHandling";
+import { getRootPath, readJsonProp } from "../utils/fileHandling";
 import { ReactorFXConfig } from '../contracts/ConfigContracts';
 import { isReactorFXConfig, ReactorFXRootConfig } from '../contracts/ConfigContracts/ReactorFXRootConfig';
 

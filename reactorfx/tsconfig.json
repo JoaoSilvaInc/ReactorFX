@@ -12,5 +12,6 @@
     "resolveJsonModule": true,
     "types": ["vite/client"]
   },
-  "include": ["packages"]
+  "exclude": ["node_modules", "dist" ,"tests"],
+  "include": ["src"]
 }
