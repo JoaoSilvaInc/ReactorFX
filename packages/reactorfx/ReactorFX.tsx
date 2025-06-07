@@ -1,7 +1,7 @@
-import React, { useEffect, FC } from 'react';
-export { ViteInjectAnimationStrategiesPath } from './plugins/ViteInjectAnimationStrategiesPath'
 
-const AnimationsController: FC = () => {
+import React, { useEffect, FC } from 'react';
+
+export const ReactorFX: FC = () => {
 
     useEffect(() => {
         // Load animation strategys
@@ -13,5 +13,3 @@ const AnimationsController: FC = () => {
 
     return null;
 };
-
-export default AnimationsController;

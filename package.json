@@ -1,0 +1,47 @@
+{
+  "name": "reactorfx",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A npm module to simplify and optmize animation handlers based in IntersectionObserver API",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaoSilvaInc/ReactorFX.git"
+  },
+  "keywords": [
+    "animate",
+    "animates",
+    "anmt",
+    "animation",
+    "animations",
+    "anmtn",
+    "IntersectionObserver",
+    "intersection",
+    "observer",
+    "obsvr",
+    "simple",
+    "simply",
+    "simplyfy",
+    "easy",
+    "ez",
+    "automatize",
+    "auto",
+    "aut"
+  ],
+  "author": "João Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoaoSilvaInc/ReactorFX/issues"
+  },
+  "homepage": "https://github.com/JoaoSilvaInc/ReactorFX#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/react": "^19.1.6"
+  },
+  "dependencies": {
+    "vite": "^6.3.5"
+  }
+}
