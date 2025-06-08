@@ -1,6 +1,5 @@
 
 import fs from 'fs';
-import path from 'path';
 
 /**
  * Loads a specific property from a JSON file in the project root.
