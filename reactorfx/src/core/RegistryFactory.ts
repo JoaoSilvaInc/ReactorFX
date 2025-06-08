@@ -1,12 +1,12 @@
 
 import AnimationStrategy from "../contracts/AnimationStrategy";
-import {recoverConfigFromEnv } from "../config";
+import { ReactorFXConfig } from "../contracts/ConfigContracts";
 
-export default function createAnimationStrategiesArray(strategiesPath: string): Promise<AnimationStrategy[]> {
+export default function createAnimationStrategiesArray(config: ReactorFXConfig): Promise<AnimationStrategy[]> {
     return new Promise<AnimationStrategy[]>((resolve, reject) => {
         
-        const config = recoverConfigFromEnv();
-        // import all strategies according to config
+        const config = import.meta.env.VITE_REACTORFX_CONFIG;
+        // import all static strategies according to config
         // put it on an array
         // return them all
 

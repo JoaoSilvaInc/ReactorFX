@@ -2,10 +2,10 @@
 import * as path from 'path';
 import { DEFAULT_CONFIG } from '../constants';
 
-import { ReactorFXConfig, isReactorFXConfig } from '../../contracts/ConfigContracts';
+import { ReactorFXConfig, isReactorFXConfig } from '../../../contracts/ConfigContracts';
 import { getProjectConfig } from './readProjectConfig';
 
-import { readJsonProp } from '../../utils/fileHandling';
+import { readJsonProp } from '../../../utils/fileHandling';
 
 /**
  * Looks for 'reactorfx' in package.json

@@ -1,6 +1,6 @@
 
-import { DEFAULT_CONFIG } from "../constants";
-import { ReactorFXConfig, isReactorFXConfig } from "../../contracts/ConfigContracts";
+import { DEFAULT_CONFIG } from "./vitePlugin/config/constants";
+import { ReactorFXConfig, isReactorFXConfig } from "./contracts/ConfigContracts";
 
 /**
 * Recover the applyed ReactorFX config from env
@@ -8,14 +8,14 @@ import { ReactorFXConfig, isReactorFXConfig } from "../../contracts/ConfigContra
 * @returns The current ReactorFX config
 * @remarks Returns 'process.env.REACTORFX_CONFIG' if 'import.meta.env.REACTORFX_CONFIG' is undefined (not in a Vite env)
 */
-export function recoverConfigFromEnv(): ReactorFXConfig {
+export function getConfig(): ReactorFXConfig {
 
     let config;
 
     // Try to find config in Vite env
     try {
         
-        const foundConfig = JSON.parse(import.meta.env.REACTORFX_CONFIG || '') as ReactorFXConfig;
+        const foundConfig = JSON.parse(import.meta.env.VITE_REACTORFX_CONFIG || '') as ReactorFXConfig;
 
         if (!isReactorFXConfig(foundConfig)) {
             throw new Error('[reactorfx] Invalid type to ReactorFX config in Vite env. Expected shape: ReactorFXConfig')
